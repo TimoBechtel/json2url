@@ -25,7 +25,7 @@ describe('using example json', () => {
       { attribute: 0.3, inner: true },
       ['inner', 'array', 12338],
     ];
-    const expected = 'test%20config&0&1=0.3&true+=inner&array&12338';
+    const expected = 'test%20config&0&1=0.3&1+=inner&array&12338';
     test('serializes json', () => {
       const serializedObject = serialize(array);
       expect(serializedObject).toBe(expected);
@@ -71,6 +71,12 @@ describe('using example json', () => {
       const deserialized = deserialize(serialized, template);
       expect(deserialized).toEqual(expectedArray);
     });
+  });
+  test('replaces true with 1', () => {
+    const example = [true, false, false, true, 0];
+    const expectedString = '1&,&,&1&0';
+    const serialized = serialize(example);
+    expect(serialized).toEqual(expectedString);
   });
 });
 

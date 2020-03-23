@@ -27,6 +27,7 @@ const serialize = (
       }
       if (!value && value !== 0) value = emptyPlaceholder;
       else {
+        if (value === true) value = 1;
         value = encoder(value);
         if (
           value.match(
@@ -108,7 +109,7 @@ const deserialize = (
 
         object[key] = array[i];
         if (typeof value === 'number') object[key] = parseFloat(array[i]) || 0;
-        else if (typeof value === 'boolean') object[key] = array[i] === 'true';
+        else if (typeof value === 'boolean') object[key] = !!array[i];
       });
     };
     mapValuesToObject(object, arrays);
