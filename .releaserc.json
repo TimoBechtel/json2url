@@ -28,6 +28,13 @@
             }
           ]
         }
+      ],
+      [
+        "@qiwi/semantic-release-gh-pages-plugin",
+        {
+          "src": "example",
+          "branch": "gh-pages"
+        }
       ]
     ]
   }

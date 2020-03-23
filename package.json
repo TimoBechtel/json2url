@@ -36,6 +36,7 @@
   },
   "homepage": "https://github.com/TimoBechtel/json2url#readme",
   "devDependencies": {
+    "@qiwi/semantic-release-gh-pages-plugin": "^1.15.9",
     "@types/jest": "^25.1.4",
     "chance": "^1.1.4",
     "eslint": "^6.8.0",
