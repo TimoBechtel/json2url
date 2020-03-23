@@ -57,6 +57,21 @@ describe('using example json', () => {
       expect(deserialized).toEqual(expected);
     });
   });
+
+  describe('with falsy values', () => {
+    const example = [null, 0, '', false, undefined];
+    const template = ['', 0, '', true, 0];
+    const expectedString = ',&0&,&,&,';
+    const expectedArray = ['', 0, '', false, 0];
+    const serialized = serialize(example);
+    test('removes falsy values', () => {
+      expect(serialized).toEqual(expectedString);
+    });
+    test('recreates falsy values', () => {
+      const deserialized = deserialize(serialized, template);
+      expect(deserialized).toEqual(expectedArray);
+    });
+  });
 });
 
 describe('using wrong data', () => {

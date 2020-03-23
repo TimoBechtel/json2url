@@ -25,7 +25,7 @@ const serialize = (
           objectPostfix
         );
       }
-      if (value === '') value = emptyPlaceholder;
+      if (!value && value !== 0) value = emptyPlaceholder;
       else {
         value = encoder(value);
         if (
