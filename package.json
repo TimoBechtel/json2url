@@ -1,0 +1,47 @@
+{
+  "name": "json2url",
+  "version": "1.0.0-alpha",
+  "description": "Encodes and decodes javascript objects into/from an url usable string",
+  "source": "src/Json2Url.js",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "unpkg": "dist/index.umd.js",
+  "scripts": {
+    "build": "microbundle",
+    "prepare": "npm run build",
+    "dev": "microbundle watch",
+    "jest": "jest",
+    "lint": "eslint src",
+    "test": "npm run lint && npm run build && npm run jest"
+  },
+  "files": [
+    "src",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TimoBechtel/json2url.git"
+  },
+  "keywords": [
+    "javascript",
+    "url",
+    "encoder",
+    "decoder",
+    "json"
+  ],
+  "author": "Timo Bechtel <timo@bechtel.solutions>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/TimoBechtel/json2url/issues"
+  },
+  "homepage": "https://github.com/TimoBechtel/json2url#readme",
+  "devDependencies": {
+    "@types/jest": "^25.1.4",
+    "chance": "^1.1.4",
+    "eslint": "^6.8.0",
+    "eslint-plugin-jest": "^23.8.2",
+    "jest": "^25.1.0",
+    "json-spawn": "^0.1.0",
+    "microbundle": "^0.11.0"
+  }
+}

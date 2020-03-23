@@ -1,0 +1,17 @@
+{
+  "title": "test configuration",
+  "circles": 12,
+  "friction": 0.4,
+  "collisionDetection": true,
+  "speed": 14,
+  "rectangles": [
+    {
+      "x": 12,
+      "y": 40
+    },
+    {
+      "x": 4,
+      "y": 98
+    }
+  ]
+}
