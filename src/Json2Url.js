@@ -4,6 +4,7 @@ const serialize = (
     objectPrefix = '=',
     objectPostfix = '+',
     separator = '&',
+    emptyPlaceholder = ',',
     encoder = encodeURIComponent,
   } = {}
 ) => {
@@ -11,6 +12,7 @@ const serialize = (
   const prefixEscaped = escapeRegEx(objectPrefix);
   const postfixEscaped = escapeRegEx(objectPostfix);
   const separatorEscaped = escapeRegEx(separator);
+  const emptyEscaped = escapeRegEx(emptyPlaceholder);
   if (typeof object === 'string') object = JSON.parse(object);
   const string = Object.values(object)
     .map(function encodeValues(value) {
@@ -23,13 +25,16 @@ const serialize = (
           objectPostfix
         );
       }
-      value = encoder(value);
-      if (
-        value.match(
-          `(${postfixEscaped})|(${prefixEscaped})|(${separatorEscaped})`
+      if (value === '') value = emptyPlaceholder;
+      else {
+        value = encoder(value);
+        if (
+          value.match(
+            `(${postfixEscaped})|(${prefixEscaped})|(${separatorEscaped})|(${emptyEscaped})`
+          )
         )
-      )
-        throw `Defined postfix, prefix or separator exists in source! (value: ${value})`;
+          throw `Defined postfix, prefix or separator exists in source! (value: ${value})`;
+      }
       return value;
     })
     .join(separator)
@@ -56,6 +61,7 @@ const deserialize = (
     objectPrefix = '=',
     objectPostfix = '+',
     separator = '&',
+    emptyPlaceholder = ',',
     decoder = decodeURIComponent,
   } = {}
 ) => {
@@ -63,30 +69,26 @@ const deserialize = (
   let curArray = arrays[0];
   let curValue = '';
   for (const c of string) {
-    if (c === separator) {
-      curArray.push(decoder(curValue));
+    if ([separator, objectPrefix, objectPostfix].indexOf(c) !== -1) {
+      if (curValue === emptyPlaceholder) curArray.push('');
+      else if (curValue) curArray.push(decoder(curValue));
       curValue = '';
-      continue;
-    }
-    if (c === objectPrefix) {
-      if (curValue !== '') curArray.push(decoder(curValue));
-      curValue = '';
-      curArray = [];
-      arrays.push(curArray);
-      continue;
-    }
-    if (c === objectPostfix) {
-      if (curValue !== '') curArray.push(decoder(curValue));
-      curValue = '';
-      arrays.pop();
-      arrays[arrays.length - 1].push(curArray);
-      curArray = arrays[arrays.length - 1];
+
+      if (c === objectPrefix) {
+        curArray = [];
+        arrays.push(curArray);
+      } else if (c === objectPostfix) {
+        arrays.pop();
+        arrays[arrays.length - 1].push(curArray);
+        curArray = arrays[arrays.length - 1];
+      }
       continue;
     }
     curValue += c;
   }
   // if last objectPostfixes are missing
-  if (curValue) curArray.push(decoder(curValue));
+  if (curValue === emptyPlaceholder) curArray.push('');
+  else if (curValue) curArray.push(decoder(curValue));
 
   while (arrays.length > 1) arrays[arrays.length - 2].push(arrays.pop());
 

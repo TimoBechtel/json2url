@@ -4,6 +4,7 @@
   "friction": 0,
   "collisionDetection": false,
   "speed": 0,
+  "emptyString": "",
   "rectangles": [
     {
       "x": 0,
