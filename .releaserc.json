@@ -1,41 +1,38 @@
 {
-  "release": {
-    "branch": "master",
-    "plugins": [
-      "@semantic-release/commit-analyzer",
-      "@semantic-release/release-notes-generator",
-      "@semantic-release/changelog",
-      "@semantic-release/npm",
-      "@semantic-release/git",
-      [
-        "@semantic-release/github",
-        {
-          "assets": [
-            {
-              "path": "dist/index.js",
-              "name": "Json2Url-CJS-${nextRelease.gitTag}.js",
-              "label": "CommonJS"
-            },
-            {
-              "path": "dist/index.mjs",
-              "name": "Json2Url-ES-${nextRelease.gitTag}.js",
-              "label": "ES Module"
-            },
-            {
-              "path": "dist/index.umd.js",
-              "name": "Json2Url-UMD-${nextRelease.gitTag}.js",
-              "label": "UMD"
-            }
-          ]
-        }
-      ],
-      [
-        "@qiwi/semantic-release-gh-pages-plugin",
-        {
-          "src": "example",
-          "branch": "gh-pages"
-        }
-      ]
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    "@semantic-release/changelog",
+    "@semantic-release/npm",
+    "@semantic-release/git",
+    [
+      "@semantic-release/github",
+      {
+        "assets": [
+          {
+            "path": "dist/index.js",
+            "name": "Json2Url-CJS-${nextRelease.gitTag}.js",
+            "label": "CommonJS"
+          },
+          {
+            "path": "dist/index.mjs",
+            "name": "Json2Url-ES-${nextRelease.gitTag}.js",
+            "label": "ES Module"
+          },
+          {
+            "path": "dist/index.umd.js",
+            "name": "Json2Url-UMD-${nextRelease.gitTag}.js",
+            "label": "UMD"
+          }
+        ]
+      }
+    ],
+    [
+      "@qiwi/semantic-release-gh-pages-plugin",
+      {
+        "src": "example",
+        "branch": "gh-pages"
+      }
     ]
-  }
+  ]
 }
