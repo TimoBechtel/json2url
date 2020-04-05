@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <style>
+      body {
+        max-width: 500px;
+        margin: 50px auto;
+      }
+      input,
+      button {
+        display: block;
+        width: 100%;
+        margin: 10px 0;
+      }
+    </style>
+    <input type="range" id="a" value="0" />
+    <input type="range" id="b" value="0" />
+    <input type="range" id="c" value="0" />
+    <input type="range" id="d" value="0" />
+
+    <button onclick="serialize()">Serialize</button>
+
+    <input type="text" id="out" placeholder="url output" />
+    <p id="notice"></p>
+
+    <script src="https://unpkg.com/json2url/dist/index.umd.js"></script>
+    <script>
+      const template = {
+        a: 0,
+        b: 0,
+        c: 0,
+        d: 0,
+      };
+      let config = { ...template };
+
+      const inputIds = ['a', 'b', 'c', 'd'];
+
+      window.addEventListener('load', () => {
+        const match = window.location.href.match(/\?c=(.*)/);
+        if (match) config = json2Url.deserialize(match[1], template);
+
+        inputIds.forEach(id => {
+          const e = document.getElementById(id);
+          e.value = config[id];
+          e.addEventListener('change', e => {
+            config[id] = e.target.value;
+          });
+        });
+      });
+
+      const serialize = () => {
+        const serialized = json2Url.serialize(config);
+        const out = document.getElementById('out');
+        out.value = `${window.location.origin}${window.location.pathname}?c=${serialized}`;
+        out.select();
+        document.execCommand('copy');
+        document.getElementById('notice').innerHTML = 'Copied to clipboard.';
+      };
+    </script>
+  </body>
+</html>
