@@ -119,8 +119,3 @@ export const deserialize = (
 
   return arrays;
 };
-
-export default {
-  serialize,
-  deserialize,
-};
