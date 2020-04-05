@@ -1,4 +1,4 @@
-const serialize = (
+export const serialize = (
   object,
   {
     objectPrefix = '=',
@@ -55,7 +55,8 @@ const serialize = (
     );
   return string;
 };
-const deserialize = (
+
+export const deserialize = (
   string,
   template,
   {
