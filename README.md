@@ -2,6 +2,8 @@
 
 Encodes and decodes JavaScript objects into/from an URL usable string
 
+**✨[Demo](https://timobechtel.github.io/json2url/)**
+
 ## Getting Started
 
 ### Installing
@@ -48,8 +50,8 @@ Download <https://unpkg.com/json2url/dist/index.umd.js> and link it in your html
   const inputIds = ['a', 'b', 'c', 'd'];
 
   window.addEventListener('load', () => {
-    inputIds.forEach(id => {
-      document.getElementById(id).addEventListener('change', e => {
+    inputIds.forEach((id) => {
+      document.getElementById(id).addEventListener('change', (e) => {
         config[id] = e.target.value;
       });
     });

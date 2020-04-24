@@ -7,9 +7,11 @@
   "module": "dist/index.mjs",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle",
-    "prepare": "npm run build",
+    "build": "microbundle && npm run build:example",
+    "build:example": "microbundle build -f umd -o example/dist/index.js",
     "dev": "microbundle watch",
+    "dev:example": "microbundle watch -f umd -o example/dist/index.js",
+    "prepare": "npm run build",
     "jest": "jest",
     "lint": "eslint src",
     "test": "npm run lint && npm run build && npm run jest"
