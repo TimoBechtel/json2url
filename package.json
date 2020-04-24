@@ -1,6 +1,6 @@
 {
   "name": "json2url",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "description": "Encodes and decodes javascript objects into/from an url usable string",
   "source": "src/Json2Url.js",
   "main": "dist/index.js",

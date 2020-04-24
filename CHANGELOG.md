@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/TimoBechtel/json2url/compare/v2.1.0...v2.1.1) (2020-04-24)
+
+
+### Bug Fixes
+
+* **example page:** fix form submit ([d18007f](https://github.com/TimoBechtel/json2url/commit/d18007fad76a1d982fe77768b8e303d0ea60989f))
+
 # [2.1.0](https://github.com/TimoBechtel/json2url/compare/v2.0.0...v2.1.0) (2020-04-24)
 
 
