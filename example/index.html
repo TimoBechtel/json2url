@@ -33,7 +33,7 @@
           <input type="range" id="c" value="0" />
           <input type="range" id="d" value="0" />
 
-          <button onclick="serialize()">Serialize</button>
+          <button type="submit">Serialize</button>
 
           <input type="text" id="out" placeholder="url output" />
         </form>
@@ -65,15 +65,16 @@
             config[id] = e.target.value;
           });
         });
+        document.forms[0].addEventListener('submit', serialize);
       });
 
-      const serialize = () => {
+      const serialize = (e) => {
+        e.preventDefault();
         const serialized = json2Url.serialize(config);
         const out = document.getElementById('out');
         out.value = `${window.location.origin}${window.location.pathname}?c=${serialized}`;
         clipboard.clipboard(out);
         ohSnack.snack('Copied to clipboard.');
-        console.log(ohSnack);
       };
     </script>
   </body>
