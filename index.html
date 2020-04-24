@@ -3,32 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+    <link rel="stylesheet" href="https://unpkg.com/oh-snack/dist/index.css" />
+    <title>json2url - Demo</title>
   </head>
   <body>
     <style>
-      body {
-        max-width: 500px;
-        margin: 50px auto;
-      }
       input,
       button {
         display: block;
+        box-sizing: border-box;
         width: 100%;
-        margin: 10px 0;
       }
     </style>
-    <input type="range" id="a" value="0" />
-    <input type="range" id="b" value="0" />
-    <input type="range" id="c" value="0" />
-    <input type="range" id="d" value="0" />
 
-    <button onclick="serialize()">Serialize</button>
+    <header>
+      <h1>json2url</h1>
+      <p>
+        Encodes and decodes javascript objects into/from an url usable string
+      </p>
+      <a href="https://github.com/TimoBechtel/json2url">Github</a>
+    </header>
 
-    <input type="text" id="out" placeholder="url output" />
-    <p id="notice"></p>
+    <main>
+      <section>
+        <form action="#">
+          <input type="range" id="a" value="0" />
+          <input type="range" id="b" value="0" />
+          <input type="range" id="c" value="0" />
+          <input type="range" id="d" value="0" />
 
-    <script src="https://unpkg.com/json2url/dist/index.umd.js"></script>
+          <button onclick="serialize()">Serialize</button>
+
+          <input type="text" id="out" placeholder="url output" />
+        </form>
+      </section>
+    </main>
+
+    <script src="./dist/index.umd.js"></script>
+    <script src="https://unpkg.com/@compactjs/clipboard/dist/index.umd.js"></script>
+    <script src="https://unpkg.com/oh-snack/dist/index.umd.js"></script>
     <script>
       const template = {
         a: 0,
@@ -44,10 +58,10 @@
         const match = window.location.href.match(/\?c=(.*)/);
         if (match) config = json2Url.deserialize(match[1], template);
 
-        inputIds.forEach(id => {
+        inputIds.forEach((id) => {
           const e = document.getElementById(id);
           e.value = config[id];
-          e.addEventListener('change', e => {
+          e.addEventListener('change', (e) => {
             config[id] = e.target.value;
           });
         });
@@ -57,9 +71,9 @@
         const serialized = json2Url.serialize(config);
         const out = document.getElementById('out');
         out.value = `${window.location.origin}${window.location.pathname}?c=${serialized}`;
-        out.select();
-        document.execCommand('copy');
-        document.getElementById('notice').innerHTML = 'Copied to clipboard.';
+        clipboard.clipboard(out);
+        ohSnack.snack('Copied to clipboard.');
+        console.log(ohSnack);
       };
     </script>
   </body>
