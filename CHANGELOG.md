@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/TimoBechtel/json2url/compare/v2.0.0...v2.1.0) (2020-04-24)
+
+
+### Features
+
+* **example page:** add example page ([e328ddd](https://github.com/TimoBechtel/json2url/commit/e328ddd9144b40a5d22b64cb8e1947095906f78e))
+
 # [2.0.0](https://github.com/TimoBechtel/json2url/compare/v1.1.0...v2.0.0) (2020-04-05)
 
 
