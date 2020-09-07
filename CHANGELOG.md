@@ -1,3 +1,10 @@
+## [2.1.2](https://github.com/TimoBechtel/json2url/compare/v2.1.1...v2.1.2) (2020-09-07)
+
+
+### Bug Fixes
+
+* **deps:** bump (security update) ([54f2247](https://github.com/TimoBechtel/json2url/commit/54f224767258e43a931a62b75abbcb593db499ba))
+
 ## [2.1.1](https://github.com/TimoBechtel/json2url/compare/v2.1.0...v2.1.1) (2020-04-24)
 
 
