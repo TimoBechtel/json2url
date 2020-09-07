@@ -28,10 +28,9 @@
     <main>
       <section>
         <form action="#">
-          <input type="range" id="a" value="0" />
-          <input type="range" id="b" value="0" />
-          <input type="range" id="c" value="0" />
-          <input type="range" id="d" value="0" />
+          <input type="range" id="a" />
+          <input type="range" id="b" />
+          <input type="date" id="c" />
 
           <button type="submit">Serialize</button>
 
@@ -47,12 +46,21 @@
       const template = {
         a: 0,
         b: 0,
-        c: 0,
-        d: 0,
+        c: '',
+        textFields: [
+          {
+            id: 0,
+            value: '',
+          },
+          {
+            id: 1,
+            value: '',
+          },
+        ],
       };
       let config = { ...template };
 
-      const inputIds = ['a', 'b', 'c', 'd'];
+      const inputIds = ['a', 'b', 'c'];
 
       window.addEventListener('load', () => {
         const match = window.location.href.match(/\?c=(.*)/);
@@ -65,10 +73,21 @@
             config[id] = e.target.value;
           });
         });
+
+        config.textFields.forEach((data) => {
+          const input = document.createElement('input');
+          input.value = data.value;
+          input.addEventListener('change', (e) => {
+            data.value = e.target.value;
+          });
+          document.getElementById('c').after(input);
+        });
+
         document.forms[0].addEventListener('submit', serialize);
       });
 
       const serialize = (e) => {
+        console.log(config);
         e.preventDefault();
         const serialized = json2Url.serialize(config);
         const out = document.getElementById('out');
