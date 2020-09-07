@@ -38,15 +38,15 @@
   },
   "homepage": "https://github.com/TimoBechtel/json2url#readme",
   "devDependencies": {
-    "@semantic-release/changelog": "^5.0.0",
+    "@semantic-release/changelog": "^5.0.1",
     "@semantic-release/git": "^9.0.0",
-    "@types/jest": "^25.1.4",
-    "chance": "^1.1.4",
-    "eslint": "^6.8.0",
-    "eslint-plugin-jest": "^23.8.2",
-    "jest": "^25.1.0",
+    "@types/jest": "^26.0.13",
+    "chance": "^1.1.7",
+    "eslint": "^7.8.1",
+    "eslint-plugin-jest": "^24.0.0",
+    "jest": "^26.4.2",
     "json-spawn": "^0.1.0",
-    "microbundle": "^0.11.0",
-    "semantic-release": "^17.0.4"
+    "microbundle": "^0.12.3",
+    "semantic-release": "^17.1.1"
   }
 }
