@@ -4,6 +4,19 @@ Encodes and decodes JavaScript objects into/from an URL usable string
 
 **✨[Demo](https://timobechtel.github.io/json2url/)**
 
+
+## Motivation
+
+The goal was to create URLs as small as possible by using a template approach.
+If don't care about the length of the url, you can just use something simpler like this:
+
+```js
+const serialize = obj => encodeURIComponent(JSON.stringify(obj));
+const deserialize = str => JSON.parse(decodeURIComponent(str));
+```
+
+Otherwise, read on.
+
 ## Getting Started
 
 ### Installing
