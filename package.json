@@ -47,6 +47,6 @@
     "jest": "^26.4.2",
     "json-spawn": "^0.1.0",
     "microbundle": "^0.12.3",
-    "semantic-release": "^17.1.1"
+    "semantic-release": "^19.0.3"
   }
 }
